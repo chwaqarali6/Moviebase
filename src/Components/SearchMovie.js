@@ -20,7 +20,7 @@ export default class SearchMovie extends React.Component {
     }
 
     handleSubmit () {
-        fetch("http://www.omdbapi.com/?apikey=c9f058e1&s="+this.state.SearchTyped)
+        fetch("https://www.omdbapi.com/?apikey=c9f058e1&s="+this.state.SearchTyped)
         .then(response => response.json())
         .then(Result => {
             console.log(Result)

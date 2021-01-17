@@ -14,7 +14,7 @@ export default class MovieDetails extends React.Component {
     componentDidMount() {
         const { MovieID } = this.props.match.params
         console.log(MovieID)
-        fetch("http://www.omdbapi.com/?apikey=c9f058e1&plot=full&i="+MovieID)
+        fetch("https://www.omdbapi.com/?apikey=c9f058e1&plot=full&i="+MovieID)
         .then(response => response.json())
         .then(Result => {
             console.log(Result)
