@@ -1,0 +1,195 @@
+@font-face {
+    font-family: Gilroy-Bold;
+    src: url(./Assets/fonts/Gilroy-Bold.ttf);
+}
+@font-face {
+    font-family: Gilroy-Regular;
+    src: url(./Assets/fonts/Gilroy-Regular.ttf);
+}
+body{
+    background-color: #1D1D1D;
+}
+
+.hero-image {
+    background-image: url("./Assets/DarthVader.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 100vh;
+    transition: height 500ms;
+}
+.hero-image.Searched {
+    height: 20vh;
+}
+
+.hero-overly {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Search {
+    height: 9vh;
+    border: 1vh solid rgba(255, 255, 255, 0.2);
+    padding: 0;
+}
+
+.SearchBar {
+    width: 80%;
+    font-family: Gilroy-Regular;
+    background: #FFFFFF;
+    font-size: 16px;
+    border: 0;
+    margin: 0;
+    padding-left: 5%;
+}
+.SearchBar:focus {
+    outline: none;
+}
+
+.SearchButton {
+    width: 20%;
+    background-color: #99001A;
+    font-family: Gilroy-Bold;
+    color: white;
+    font-size: 16px;
+    border: 0;
+}
+.SearchButton:focus {
+    outline: none;
+}
+
+
+.SearchResults {
+    margin: 5vh 7vw;
+}
+
+figure{
+    width: 170px;
+    height: 255px;
+    overflow: hidden;
+    margin: 0;
+}
+.Poster {
+    width: inherit;
+    height: inherit;
+    border: 5px solid white;
+    border-radius: 3px;
+    padding: 0;
+}
+figcaption{
+    color: white;
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    -webkit-transition: 300ms;
+    transition: all 300ms;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+figcaption:hover{
+   opacity: 100%;
+}
+.ShowDetails {
+    background-color: #99001A;
+    font-family: Gilroy-Bold;
+    color: white;
+    font-size: 16px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.MovieInfo {
+    padding: 5px;
+    max-width: 170px;
+    margin: 0;
+}
+.MovieTitle {
+    font-family: Gilroy-Bold;
+    font-size: .95em;
+    color: white;
+    margin: 0;
+    white-space: nowrap;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.MovieYear {
+    font-family: Gilroy-Regular;
+    font-size: .85em;
+    color: #BFBFBF;
+}
+
+
+
+.Details {
+    color: white;
+    font-family: Gilroy-Regular;
+    font-size: 1em;
+    margin-top: 50px;
+}
+.mb-50 {
+    margin-bottom: 50px ;
+}
+
+.Overview h1 {
+    font-family: Gilroy-Bold;
+    font-size: 2.5em;
+    margin-bottom: 24px
+}
+
+.Overview h2 {
+    font-family: Gilroy-Bold;
+    font-size: 1em;
+    /* margin-bottom: 24px */
+}
+.Overview .OverviewInfo {
+    margin-bottom: 25px
+}
+.Overview span {
+    margin-bottom: 15px
+}
+
+
+
+.Title {
+    font-family: Gilroy-Bold;
+    font-size: 2.5em;
+    margin-bottom: 24px
+}
+
+.DetailHeading {
+    font-family: Gilroy-Bold;
+    font-size: 1.25em;
+}
+.Plot {
+    color: #919191;
+    font-size: .9em;
+}
+
+hr.Divider {
+    border-top: 1px solid white;
+}
+.InlineHeading {
+    font-family: Gilroy-Bold;
+    font-size: 1em;
+}
+
+.DetailIconsInfo{
+    display: inline-block;
+    width: 50px;
+}
+
+.DetailIcons {
+    height: 25px;
+}
