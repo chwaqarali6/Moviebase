@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from "react-router-dom"
 import Back from '../Assets/img/icons/back.png'
 import PosterNotFound from "../Assets/img/poster.png"
 import Runtime from '../Assets/img/icons/runtime.png'
@@ -8,23 +7,29 @@ import Rating from '../Assets/img/icons/rating.png'
 import Released from '../Assets/img/icons/released.png'
 
 export default class MovieDetails extends React.Component {
-    constructor () {
-        super()
+    constructor (props) {
+        super(props)
         this.state = {
             MovieInformation: {}
         }
+        this.goBack = this.goBack.bind(this); 
     }
+
     componentDidMount() {
+        console.log(this.props.location)
         const { MovieID } = this.props.match.params
-        console.log(MovieID)
         fetch("https://www.omdbapi.com/?apikey=c9f058e1&plot=full&i="+MovieID)
         .then(response => response.json())
         .then(Result => {
-            console.log(Result)
+            // console.log(Result)
             this.setState({
                 MovieInformation: Result
             })
         })
+    }
+
+    goBack(){
+        this.props.history.goBack();
     }
 
     render () {
@@ -35,7 +40,7 @@ export default class MovieDetails extends React.Component {
         return (
             <div className="container Details">
                 <div className="row mb-50">
-                    <Link to={`/`}><img className="GoBack" src={Back} alt=""/></Link>
+                    <img className="RoundButton" onClick={this.goBack} src={Back} alt=""/>
                 </div>
                 <div className="row mb-50">
                     <div className="col-xs-10 col-sm-6 col-lg-3">

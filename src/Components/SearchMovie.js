@@ -1,5 +1,4 @@
 import React from 'react'
-// import MovieCard from './MovieCard'
 import MovieList from './MovieList' 
 
 export default class SearchMovie extends React.Component {
@@ -9,9 +8,13 @@ export default class SearchMovie extends React.Component {
             SearchTyped: "",
             ResultMovies: {},
             Searched: false,
+            NumberOfPages: 1,
+            CurrentPage: 1
         }
         this.SearchHandle = this.SearchHandle.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.PreviousPage = this.PreviousPage.bind(this)
+        this.NextPage = this.NextPage.bind(this)
     }
 
     SearchHandle(event) {
@@ -19,28 +22,58 @@ export default class SearchMovie extends React.Component {
             [event.target.name]: event.target.value
         })
     }
-    componentDidMount () {
-        if(this.state.SearchTyped!=="")
-        {
-          this.handleSubmit()   
-        }
-    }
 
     handleSubmit () {
-        // if(this.state.SearchTyped!=="")
-        // {
+        if(this.state.SearchTyped!=="")
+        {
             fetch("https://www.omdbapi.com/?apikey=c9f058e1&s="+this.state.SearchTyped)
+                .then(response => response.json())
+                .then(Result => {
+                    this.setState({
+                        Searched: true,
+                        ResultMovies: Result.Search,
+                        NumberOfPages: ~~(Result.totalResults/10+1),
+                        CurrentPage: 1
+                    })
+                })
+        }
+    }
+    PreviousPage () {
+        if(this.state.CurrentPage>1)
+        {
+            this.setState(prevState => { return {
+                CurrentPage: prevState.CurrentPage - 1
+            }},() => {
+                fetch("https://www.omdbapi.com/?apikey=c9f058e1&s="+this.state.SearchTyped+"&page="+this.state.CurrentPage)
                 .then(response => response.json())
                 .then(Result => {
                     console.log(Result)
                     this.setState({
-                        ResultMovies: Result.Search,
-                        ShowMovieDetails: false,
-                        Searched: true
+                        ResultMovies: Result.Search
                     })
                 })
-        // }
+            })
+            
+        }
     }
+    NextPage () {
+        if(this.state.CurrentPage<this.state.NumberOfPages)
+        {
+            this.setState(prevState => { return {
+                CurrentPage: prevState.CurrentPage + 1
+            }},() => {
+                fetch("https://www.omdbapi.com/?apikey=c9f058e1&s="+this.state.SearchTyped+"&page="+this.state.CurrentPage)
+                .then(response => response.json())
+                .then(Result => {
+                    console.log(Result)
+                    this.setState({
+                        ResultMovies: Result.Search
+                    })
+                })
+            })
+        }
+    }
+
 
     render () {
         let SearchBox = ["hero-image hero-height"]
@@ -57,7 +90,15 @@ export default class SearchMovie extends React.Component {
                         </div>
                     </div>
                 </div>
-                <MovieList Searched={this.state.Searched} ResultMovies={this.state.ResultMovies} ShowMovieDetails={this.state.ShowMovieDetails} />
+                <MovieList  StatesCondition = {{
+                    SearchTyped: this.state.SearchTyped,
+                    Searched: this.state.Searched,
+                    ResultMovies: this.state.ResultMovies,
+                    CurrentPage: this.state.CurrentPage,
+                    NumberOfPages: this.state.NumberOfPages,
+                    PreviousPage: this.PreviousPage,
+                    NextPage: this.NextPage
+                }} />
             </div>  
         )
     }

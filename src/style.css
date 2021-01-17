@@ -202,6 +202,26 @@ hr.Divider {
     height: 25px;
 }
 
-.GoBack {
+.RoundButton {
     height: 50px;
+    cursor: pointer;
+}
+
+.PageShift {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2vh 7vw;
+}
+
+.PageIndicator {
+    text-align: center;
+    color: white;
+    width: 60%;
+}
+
+.PageShift h1 {
+    font-family: Gilroy-Bold;
+    font-size: 2em;
+    margin: 0;
 }
