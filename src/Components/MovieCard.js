@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-// import MovieDetails from './MovieDetails'
 
 export default class MovieCard extends React.Component {
     constructor () {

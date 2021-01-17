@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from "react-router-dom"
+import Back from '../Assets/img/icons/back.png'
 import Runtime from '../Assets/img/icons/runtime.png'
 import Votes from '../Assets/img/icons/votes.png'
 import Rating from '../Assets/img/icons/rating.png' 
@@ -19,7 +21,7 @@ export default class MovieDetails extends React.Component {
         .then(Result => {
             console.log(Result)
             this.setState({
-                MovieInformation: Result,
+                MovieInformation: Result
             })
         })
     }
@@ -27,6 +29,9 @@ export default class MovieDetails extends React.Component {
     render () {
         return (
             <div className="container Details">
+                <div className="row mb-50">
+                    <Link to={`/`}><img className="GoBack" src={Back} alt=""/></Link>
+                </div>
                 <div className="row mb-50">
                     <div className="col-xs-10 col-sm-6 col-lg-3">
                         <img className="Poster" src={this.state.MovieInformation.Poster} alt=""/>
@@ -80,6 +85,8 @@ export default class MovieDetails extends React.Component {
 
                         <div className="DetailHeading">Production</div>
                         <div className="Plot">{this.state.MovieInformation.Production} </div>
+                        <hr className="Divider" />
+
                     </div>
                 </div>
             </div>
