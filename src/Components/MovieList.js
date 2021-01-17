@@ -4,7 +4,7 @@ import Previous from '../Assets/img/icons/back.png'
 import Next from '../Assets/img/icons/next.png'
 
 export default function MovieList (props) {
-    if(props.StatesCondition.Searched && props.StatesCondition.ResultMovies)
+    if(props.StatesCondition.ResultMovies && props.StatesCondition.ResultMovies.length>0)
     {
         return (
             <div>
@@ -30,7 +30,7 @@ export default function MovieList (props) {
             
         ) 
     }   
-    else if(props.StatesCondition.Searched)
+    else if(props.StatesCondition.SearchTyped!=="")
     {
         return (
             <div className="ResultError">Results Not Found</div>
