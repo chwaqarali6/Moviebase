@@ -82,13 +82,13 @@ figure{
     border-radius: 3px;
     padding: 0;
 }
-figcaption{
+.FigureCaption{
     color: white;
     width: inherit;
     height: inherit;
-    opacity: 0;
     position: absolute;
-    top: 0;
+    opacity: 0%;
+    top: 0%;
     z-index: 2;
     -webkit-transition: 300ms;
     transition: all 300ms;
@@ -97,9 +97,10 @@ figcaption{
     justify-content: center;
     align-items: center;
 }
-figcaption:hover{
+.FigureCaption:hover{
    opacity: 100%;
 }
+
 .ShowDetails {
     background-color: #99001A;
     font-family: Gilroy-Bold;

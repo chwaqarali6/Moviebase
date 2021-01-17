@@ -16,7 +16,7 @@ s
             <div className="col">
                 <figure>
                     <img className="Poster" src={this.props.MovieInfo.Poster} alt=""/>
-                    <figcaption>
+                    <figcaption className="FigureCaption">
                         <Link to={`/Movie/${this.props.MovieInfo.ID}`}>
                             <button className="ShowDetails">
                                 View Details
