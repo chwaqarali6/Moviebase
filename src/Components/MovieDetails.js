@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 import Back from '../Assets/img/icons/back.png'
 import PosterNotFound from "../Assets/img/poster.png"
 import Runtime from '../Assets/img/icons/runtime.png'
@@ -12,11 +13,9 @@ export default class MovieDetails extends React.Component {
         this.state = {
             MovieInformation: {}
         }
-        this.goBack = this.goBack.bind(this); 
     }
 
     componentDidMount() {
-        console.log(this.props.location)
         const { MovieID } = this.props.match.params
         fetch("https://www.omdbapi.com/?apikey=c9f058e1&plot=full&i="+MovieID)
         .then(response => response.json())
@@ -28,19 +27,18 @@ export default class MovieDetails extends React.Component {
         })
     }
 
-    goBack(){
-        this.props.history.goBack();
-    }
-
     render () {
         let PosterLink = this.state.MovieInformation.Poster
         if(PosterLink==='N/A') {
             PosterLink = PosterNotFound
         }
+        const { Query } = this.props.match.params
         return (
             <div className="container Details">
                 <div className="row mb-50">
-                    <img className="RoundButton" onClick={this.goBack} src={Back} alt=""/>
+                        <Link to={`/${Query}`}>
+                            <img className="RoundButton" src={Back} alt=""/>
+                        </Link>
                 </div>
                 <div className="row mb-50">
                     <div className="col-xs-10 col-sm-6 col-lg-3">

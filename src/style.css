@@ -59,9 +59,16 @@ body{
     color: white;
     font-size: 16px;
     border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .SearchButton:focus {
     outline: none;
+}
+.SearchButton:hover {
+    text-decoration: none;
+    color: white;
 }
 
 

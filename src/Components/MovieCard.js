@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 import PosterNotFound from "../Assets/img/poster.png"
 
 export default class MovieCard extends React.Component {
-    constructor () {
-        super()
+    constructor (props) {
+        super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     handleSubmit () {
@@ -21,7 +21,7 @@ export default class MovieCard extends React.Component {
                 <figure>
                     <img className="Poster" src={PosterLink} alt=""/>
                     <figcaption className="FigureCaption">
-                        <Link to={`/Movie/${this.props.MovieInfo.ID}`}>
+                        <Link to={`/${this.props.MovieInfo.Query}/${this.props.MovieInfo.ID}`}>
                             <button className="ShowDetails">
                                 View Details
                             </button>

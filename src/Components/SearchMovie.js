@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 import MovieList from './MovieList' 
 
 export default class SearchMovie extends React.Component {
@@ -23,6 +24,20 @@ export default class SearchMovie extends React.Component {
         })
     }
 
+    componentDidMount()
+    {
+        const { Query } = this.props.match.params
+        if(Query!==undefined)
+        {
+            this.setState({
+                SearchTyped: Query
+            },() => {
+                this.handleSubmit()
+            })
+        }
+        
+    }
+
     handleSubmit () {
         if(this.state.SearchTyped!=="")
         {
@@ -38,6 +53,7 @@ export default class SearchMovie extends React.Component {
                 })
         }
     }
+
     PreviousPage () {
         if(this.state.CurrentPage>1)
         {
@@ -74,7 +90,6 @@ export default class SearchMovie extends React.Component {
         }
     }
 
-
     render () {
         let SearchBox = ["hero-image hero-height"]
         if(this.state.Searched) {
@@ -86,7 +101,10 @@ export default class SearchMovie extends React.Component {
                     <div className="hero-overly">
                         <div className="row Search col-xl-7 col-lg-7">
                             <input className="SearchBar" type="text" name="SearchTyped" placeholder="Enter Movie Title" onChange={this.SearchHandle} />
-                            <button className="SearchButton" type="submit" onClick = {this.handleSubmit}> Search </button>
+                            <Link className="SearchButton" onClick = {this.handleSubmit} to={`/${this.state.SearchTyped}`}>
+                                Search
+                            </Link>
+                            
                         </div>
                     </div>
                 </div>

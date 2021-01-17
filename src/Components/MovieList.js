@@ -9,7 +9,6 @@ export default function MovieList (props) {
         return (
             <div>
                 <div className="row no-margin PageShift">
-                    {/* <button className="SearchButton" type="submit" onClick = {}> PreviousPage </button> */}
                     <img className="RoundButton" onClick={props.StatesCondition.PreviousPage} src={Previous} alt="Previous Page"/>
                     <div className="PageIndicator"><h1>{props.StatesCondition.CurrentPage}/{props.StatesCondition.NumberOfPages}</h1></div>
                     <img className="RoundButton" onClick={props.StatesCondition.NextPage} src={Next} alt="Next Page"/>
@@ -21,7 +20,8 @@ export default function MovieList (props) {
                                 ID: item.imdbID,
                                 Poster: item.Poster,
                                 Title: item.Title,
-                                Year: item.Year
+                                Year: item.Year, 
+                                Query: props.StatesCondition.SearchTyped
                             }} />
                         )
                     })}
