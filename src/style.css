@@ -11,7 +11,7 @@ body{
 }
 
 .hero-image {
-    background-image: url("./Assets/DarthVader.jpg");
+    background-image: url("./Assets/img/DarthVader.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
@@ -67,6 +67,13 @@ body{
 
 .SearchResults {
     margin: 5vh 7vw;
+}
+
+.ResultError {
+    color: #99001A;
+    font-family: Gilroy-Bold;
+    text-align: center;
+    font-size: 24px;
 }
 
 figure{

@@ -1,21 +1,25 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import PosterNotFound from "../Assets/img/poster.png"
 
 export default class MovieCard extends React.Component {
     constructor () {
         super()
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-s
     handleSubmit () {
         this.props.MovieInfo.ShowDetails = this.props.MovieInfo.ID
     }
     
     render () {
+        let PosterLink = this.props.MovieInfo.Poster
+        if(PosterLink==='N/A') {
+            PosterLink = PosterNotFound
+        }
         return (
             <div className="col">
                 <figure>
-                    <img className="Poster" src={this.props.MovieInfo.Poster} alt=""/>
+                    <img className="Poster" src={PosterLink} alt=""/>
                     <figcaption className="FigureCaption">
                         <Link to={`/Movie/${this.props.MovieInfo.ID}`}>
                             <button className="ShowDetails">

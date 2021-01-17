@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import Back from '../Assets/img/icons/back.png'
+import PosterNotFound from "../Assets/img/poster.png"
 import Runtime from '../Assets/img/icons/runtime.png'
 import Votes from '../Assets/img/icons/votes.png'
 import Rating from '../Assets/img/icons/rating.png' 
@@ -27,6 +28,10 @@ export default class MovieDetails extends React.Component {
     }
 
     render () {
+        let PosterLink = this.state.MovieInformation.Poster
+        if(PosterLink==='N/A') {
+            PosterLink = PosterNotFound
+        }
         return (
             <div className="container Details">
                 <div className="row mb-50">
@@ -34,7 +39,7 @@ export default class MovieDetails extends React.Component {
                 </div>
                 <div className="row mb-50">
                     <div className="col-xs-10 col-sm-6 col-lg-3">
-                        <img className="Poster" src={this.state.MovieInformation.Poster} alt=""/>
+                        <img className="Poster" src={PosterLink} alt=""/>
                     </div>
                     <div className="Overview col-xs-10 col-sm-14 col-md-7 col-lg-8 col-lg-offset-1">
                         <h1 className="Title">{this.state.MovieInformation.Title}</h1>

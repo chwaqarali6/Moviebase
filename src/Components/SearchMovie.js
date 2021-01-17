@@ -1,5 +1,6 @@
 import React from 'react'
-import MovieCard from './MovieCard' 
+// import MovieCard from './MovieCard'
+import MovieList from './MovieList' 
 
 export default class SearchMovie extends React.Component {
     constructor () {
@@ -18,24 +19,33 @@ export default class SearchMovie extends React.Component {
             [event.target.name]: event.target.value
         })
     }
+    componentDidMount () {
+        if(this.state.SearchTyped!=="")
+        {
+          this.handleSubmit()   
+        }
+    }
 
     handleSubmit () {
-        fetch("https://www.omdbapi.com/?apikey=c9f058e1&s="+this.state.SearchTyped)
-        .then(response => response.json())
-        .then(Result => {
-            console.log(Result)
-            this.setState({
-                ResultMovies: Result.Search,
-                ShowMovieDetails: false,
-                Searched: true
-            })
-        })
+        // if(this.state.SearchTyped!=="")
+        // {
+            fetch("https://www.omdbapi.com/?apikey=c9f058e1&s="+this.state.SearchTyped)
+                .then(response => response.json())
+                .then(Result => {
+                    console.log(Result)
+                    this.setState({
+                        ResultMovies: Result.Search,
+                        ShowMovieDetails: false,
+                        Searched: true
+                    })
+                })
+        // }
     }
 
     render () {
-        let SearchBox = ["hero-image hero-height"];
+        let SearchBox = ["hero-image hero-height"]
         if(this.state.Searched) {
-            SearchBox.push('Searched');
+            SearchBox.push('Searched')
         }
         return (
             <div>
@@ -47,19 +57,7 @@ export default class SearchMovie extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="SearchResults row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5">
-                    {this.state.ResultMovies && this.state.ResultMovies.length && this.state.ResultMovies.map((item, index) => {
-                        return (
-                            <MovieCard key={index} MovieInfo = {{
-                                ID: item.imdbID,
-                                Poster: item.Poster,
-                                Title: item.Title,
-                                Year: item.Year,
-                                ShowDetails: this.state.ShowMovieDetails
-                            }} />
-                        )
-                    })}
-                </div>
+                <MovieList Searched={this.state.Searched} ResultMovies={this.state.ResultMovies} ShowMovieDetails={this.state.ShowMovieDetails} />
             </div>  
         )
     }
