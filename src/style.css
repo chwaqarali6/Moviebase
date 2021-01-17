@@ -87,7 +87,7 @@ figure{
     width: inherit;
     height: inherit;
     position: absolute;
-    opacity: 0%;
+    opacity: 0;
     top: 0%;
     z-index: 2;
     -webkit-transition: 300ms;
@@ -98,7 +98,7 @@ figure{
     align-items: center;
 }
 .FigureCaption:hover{
-   opacity: 100%;
+   opacity: 1;
 }
 
 .ShowDetails {

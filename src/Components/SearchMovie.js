@@ -43,7 +43,7 @@ export default class SearchMovie extends React.Component {
                     <div className="hero-overly">
                         <div className="row Search col-xl-7 col-lg-7">
                             <input className="SearchBar" type="text" name="SearchTyped" placeholder="Enter Movie Title" onChange={this.SearchHandle} />
-                            <button className="SearchButton" type="submit" onClick = {this.handleSubmit}> Submit </button>
+                            <button className="SearchButton" type="submit" onClick = {this.handleSubmit}> Search </button>
                         </div>
                     </div>
                 </div>
